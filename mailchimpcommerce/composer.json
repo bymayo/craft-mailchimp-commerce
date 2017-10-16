@@ -1,0 +1,15 @@
+{
+	"name": "madebyshape/mailchimpcommerce",
+	"description": "Subscribes commerce customers to MailChimp list",
+	"type": "craft-plugin",
+	"authors": [
+		{
+			"name": "Jason Mayo",
+			"homepage": "http://bymayo.co.uk"
+		}
+	],
+	"require": {
+		"composer/installers": "~1.0",
+		"drewm/mailchimp-api": "^2.4"
+	}
+}

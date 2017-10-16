@@ -1,0 +1,49 @@
+{% import "_includes/forms" as forms %}
+
+{% set settings = craft.mailchimpCommerce.getAllSettings() %}
+
+<h2>API & List</h2>
+
+{{ forms.textField(
+		{
+	    	label: 'API Key',
+	    	instructions: '<a href="https://kb.mailchimp.com/integrations/api-integrations/about-api-keys" target="_blank">Find or Generate Your API Key</a>',
+			id: 'apiKey',
+			name: 'apiKey', 
+			value: settings['apiKey']
+		}
+	)
+}}
+
+{{ forms.textField(
+		{
+	    	label: 'List ID',
+	    	instructions: '<a href="https://kb.mailchimp.com/lists/manage-contacts/find-your-list-id" target="_blank">Find Your List ID</a>',
+			id: 'listId',
+			name: 'listId', 
+			value: settings['listId']
+		}
+	)
+}}
+
+<h2>Merge Fields</h2>
+
+{{ forms.textField(
+		{
+	    	label: 'First Name',
+			id: 'mergeFieldFirstName',
+			name: 'mergeFieldFirstName', 
+			value: settings['mergeFieldFirstName']
+		}
+	)
+}}
+
+{{ forms.textField(
+		{
+	    	label: 'Last Name',
+			id: 'mergeFieldLastName',
+			name: 'mergeFieldLastName', 
+			value: settings['mergeFieldLastName']
+		}
+	)
+}}
