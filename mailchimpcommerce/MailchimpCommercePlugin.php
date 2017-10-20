@@ -20,10 +20,14 @@ class MailchimpCommercePlugin extends BasePlugin
 		craft()->on(
 			'commerce_orders.onSaveOrder', 
 			function($event){
+				
 		    	$order = $event->params['order'];
-		    	if ($order->email) {
-					craft()->mailchimpCommerce->subscribe($order);
+		    	
+		    	if (craft()->request->getPost('mailchimpCommerce_optIn') == true && $order->email)
+		    	{
+			    	craft()->mailchimpCommerce->subscribe($order);
 		    	}
+		    	
 			}
 		);
 	    
@@ -53,12 +57,12 @@ class MailchimpCommercePlugin extends BasePlugin
 
     public function getVersion()
     {
-        return '1.0.0';
+        return '1.0.1';
     }
 
     public function getSchemaVersion()
     {
-        return '1.0.0';
+        return '1.0.1';
     }
 
     public function getDeveloper()
