@@ -13,7 +13,7 @@ MailChimp Commerce is a Craft CMS plugin that automatically subscribes customers
 Within any `updateCart` form, add the following checkbox field (Or hidden, your choice!)
 
 	<label for="mailchimpCommerce_optIn">
-		Receive and updates by email?
+		Receive offers and updates by email?
 	</label>
 	<input type="checkbox" name="mailchimpCommerce_optIn" value="true" id="mailchimpCommerce_optIn">
 	
