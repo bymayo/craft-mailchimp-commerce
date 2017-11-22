@@ -1,7 +1,7 @@
 [
 	{
         "version": "1.0.1",
-        "downloadUrl": "https://raw.githubusercontent.com/madebyshape/mailchimpcommerce/archive/master.zip",
+        "downloadUrl": "https://raw.githubusercontent.com/bymayo/mailchimpcommerce/archive/master.zip",
         "date": "2016-10-20T10:00:50.530Z",
         "notes": [
             "[Added] Added opt in / out checkbox field"
@@ -9,7 +9,7 @@
     },
     {
         "version": "1.0.0",
-        "downloadUrl": "https://raw.githubusercontent.com/madebyshape/mailchimpcommerce/archive/master.zip",
+        "downloadUrl": "https://raw.githubusercontent.com/bymayo/mailchimpcommerce/archive/master.zip",
         "date": "2016-10-16T10:00:50.530Z",
         "notes": [
             "[Added] Initial release"

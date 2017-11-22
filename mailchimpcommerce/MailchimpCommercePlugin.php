@@ -47,12 +47,12 @@ class MailchimpCommercePlugin extends BasePlugin
 
     public function getDocumentationUrl()
     {
-        return 'https://github.com/madebyshape/mailchimpcommerce/blob/master/README.md';
+        return 'https://github.com/bymayo/mailchimpcommerce/blob/master/README.md';
     }
 
     public function getReleaseFeedUrl()
     {
-        return 'https://raw.githubusercontent.com/madebyshape/mailchimpcommerce/master/releases.json';
+        return 'https://raw.githubusercontent.com/bymayo/mailchimpcommerce/master/releases.json';
     }
 
     public function getVersion()
