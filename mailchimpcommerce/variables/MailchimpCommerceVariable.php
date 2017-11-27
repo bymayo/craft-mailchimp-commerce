@@ -17,4 +17,9 @@ class MailchimpCommerceVariable
 	    return craft()->mailchimpCommerce->getAllSettings();
     }
     
+    public function fieldOptIn()
+    {
+	    return TemplateHelper::getRaw('<input type="checkbox" name="mailchimpCommerce_optIn" value="true" id="mailchimpCommerce_optIn" checked>');
+    }
+    
 }

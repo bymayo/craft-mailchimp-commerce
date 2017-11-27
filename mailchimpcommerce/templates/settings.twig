@@ -2,48 +2,87 @@
 
 {% set settings = craft.mailchimpCommerce.getAllSettings() %}
 
-<h2>API & List</h2>
+{% includeCssResource 'mailchimpCommerce/style.css' %}
 
-{{ forms.textField(
-		{
-	    	label: 'API Key',
-	    	instructions: '<a href="https://kb.mailchimp.com/integrations/api-integrations/about-api-keys" target="_blank">Find or Generate Your API Key</a>',
-			id: 'apiKey',
-			name: 'apiKey', 
-			value: settings['apiKey']
-		}
-	)
-}}
+<div class="mailchimp-commerce">
 
-{{ forms.textField(
-		{
-	    	label: 'List ID',
-	    	instructions: '<a href="https://kb.mailchimp.com/lists/manage-contacts/find-your-list-id" target="_blank">Find Your List ID</a>',
-			id: 'listId',
-			name: 'listId', 
-			value: settings['listId']
-		}
-	)
-}}
+	<div class="setting-group">
 
-<h2>Merge Fields</h2>
+		<h2>API</h2>
+		<code>
+			<a href="https://kb.mailchimp.com/integrations/api-integrations/about-api-keys" target="_blank">Find or Generate Your API Key</a>
+		</code>
+		
+		{{ forms.textField(
+				{
+			    	label: 'API Key',
+			    	required: true,
+					id: 'apiKey',
+					name: 'apiKey', 
+					value: settings['apiKey']
+				}
+			)
+		}}
+	
+	</div>
+	
+	<div class="setting-group">
+	
+		<h2>Lists</h2>
+		<code>
+			<a href="https://kb.mailchimp.com/lists/manage-contacts/find-your-list-id" target="_blank">Find Your List ID</a>
+		</code>
+		
+		{{ forms.textField(
+				{
+			    	label: 'Order Started List ID',
+			    	instructions: 'The list that is used when a customer starts an order process',
+			    	required: true,
+					id: 'listIdStarted',
+					name: 'listIdStarted', 
+					value: settings['listIdStarted']
+				}
+			)
+		}}
+		
+		{{ forms.textField(
+				{
+			    	label: 'Order Complete List ID',
+			    	instructions: 'The list that is used when a customer completes an order',
+			    	required: true,
+					id: 'listIdComplete',
+					name: 'listIdComplete', 
+					value: settings['listIdComplete']
+				}
+			)
+		}}
+	
+	</div>
+	
+	<div class="setting-group">
+	
+		<h2>Merge Fields</h2>
+		
+		{{ forms.textField(
+				{
+			    	label: 'First Name',
+					id: 'mergeFieldFirstName',
+					name: 'mergeFieldFirstName', 
+					value: settings['mergeFieldFirstName']
+				}
+			)
+		}}
+		
+		{{ forms.textField(
+				{
+			    	label: 'Last Name',
+					id: 'mergeFieldLastName',
+					name: 'mergeFieldLastName', 
+					value: settings['mergeFieldLastName']
+				}
+			)
+		}}
+	
+	</div>
 
-{{ forms.textField(
-		{
-	    	label: 'First Name',
-			id: 'mergeFieldFirstName',
-			name: 'mergeFieldFirstName', 
-			value: settings['mergeFieldFirstName']
-		}
-	)
-}}
-
-{{ forms.textField(
-		{
-	    	label: 'Last Name',
-			id: 'mergeFieldLastName',
-			name: 'mergeFieldLastName', 
-			value: settings['mergeFieldLastName']
-		}
-	)
-}}
+</div>

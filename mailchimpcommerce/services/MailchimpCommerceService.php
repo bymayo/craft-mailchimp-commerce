@@ -24,17 +24,15 @@ class MailchimpCommerceService extends BaseApplicationComponent
 		return craft()->plugins->getPlugin('MailchimpCommerce')->getSettings()->$name;
 	}
 
-    public function subscribe($order)
+    public function subscribe($order, $listId)
     {
 
 		$mailChimp = new MailChimp($this->getSetting('apiKey'));
 		
 		$address = craft()->commerce_addresses->getAddressById($order->shippingAddressId);
-		
-		// $mailChimpSubscriber = $mailChimp->subscriberHash($order->email);
 			
 		$result = $mailChimp->post(
-			"lists/" . $this->getSetting('listId') . "/members", 
+			"lists/" . $listId . "/members", 
 			[
 				'status' => 'subscribed',
 				'email_address' => $order->email,
@@ -46,11 +44,41 @@ class MailchimpCommerceService extends BaseApplicationComponent
 		);
 
 		if ($mailChimp->success()) {
-			MailchimpCommercePlugin::log('Success');
+			MailchimpCommercePlugin::log('[Subscribe] Success');
 		} else {
-			MailchimpCommercePlugin::log('Error - ' . $mailChimp->getLastError());
+			MailchimpCommercePlugin::log('[Subscribe] Error - ' . $mailChimp->getLastError());
 		}
 	    
+    }
+    
+    public function unsubscribe($order, $listId)
+    {
+	    
+		$mailChimp = new MailChimp($this->getSetting('apiKey'));
+
+		$subscriberHash = $mailChimp->subscriberHash($order->email);
+		
+		$mailChimp->delete(
+			"lists/" . $listId . "/members/" . $subscriberHash
+		);
+			
+		if ($mailChimp->success()) {
+			MailchimpCommercePlugin::log('[Unsubscribe] Success');
+		} else {
+			MailchimpCommercePlugin::log('[Unsubscribe] Error - ' . $mailChimp->getLastError());
+		}			
+			
+    }
+    
+    public function orderSaved($order)
+    {
+	    $this->subscribe($order, $this->getSetting('listIdStarted'));
+    }
+    
+    public function orderComplete($order)
+    {
+	    $this->unsubscribe($order, $this->getSetting('listIdStarted'));
+	    $this->subscribe($order, $this->getSetting('listIdComplete'));
     }
 
 }

@@ -25,7 +25,21 @@ class MailchimpCommercePlugin extends BasePlugin
 		    	
 		    	if (craft()->request->getPost('mailchimpCommerce_optIn') == true && $order->email)
 		    	{
-			    	craft()->mailchimpCommerce->subscribe($order);
+			    	craft()->mailchimpCommerce->orderSaved($order);
+		    	}
+		    	
+			}
+		);
+		
+		craft()->on(
+			'commerce_orders.onOrderComplete', 
+			function($event){
+				
+		    	$order = $event->params['order'];
+		    	
+		    	if ($order->email)
+		    	{
+			    	craft()->mailchimpCommerce->orderComplete($order);
 		    	}
 		    	
 			}
@@ -57,12 +71,12 @@ class MailchimpCommercePlugin extends BasePlugin
 
     public function getVersion()
     {
-        return '1.0.1';
+        return '1.0.2';
     }
 
     public function getSchemaVersion()
     {
-        return '1.0.1';
+        return '1.0.2';
     }
 
     public function getDeveloper()
@@ -83,8 +97,9 @@ class MailchimpCommercePlugin extends BasePlugin
     protected function defineSettings()
     {
         return array(
-            'apiKey' => array(AttributeType::String),
-            'listId' => array(AttributeType::String),
+            'apiKey' => array(AttributeType::String, 'required' => true),
+            'listIdStarted' => array(AttributeType::String, 'required' => true),
+            'listIdComplete' => array(AttributeType::String, 'required' => true),
             'mergeFieldFirstName' => array(AttributeType::String, 'default' => 'FNAME'),
             'mergeFieldLastName' => array(AttributeType::String, 'default' => 'LNAME')
         );

@@ -1,5 +1,13 @@
 [
 	{
+        "version": "1.0.2",
+        "downloadUrl": "https://raw.githubusercontent.com/bymayo/mailchimpcommerce/archive/master.zip",
+        "date": "2016-10-27T10:00:50.530Z",
+        "notes": [
+            "[Added] Split the lists in to 'Started' and 'Completed'"
+        ]
+    },	
+	{
         "version": "1.0.1",
         "downloadUrl": "https://raw.githubusercontent.com/bymayo/mailchimpcommerce/archive/master.zip",
         "date": "2016-10-20T10:00:50.530Z",
