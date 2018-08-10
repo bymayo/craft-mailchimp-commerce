@@ -1,6 +1,8 @@
+> ⚠️ This repo is not under active development and will not be moved to Craft 3.x. ⚠️
+
 <img src="https://github.com/bymayo/mailchimp-commerce/raw/master/screenshots/icon.png" width="50">
 
-# MailChimp Commerce
+# MailChimp Commerce for Craft 2.x
 
 MailChimp Commerce is a Craft CMS plugin that automatically subscribes customers to a MailChimp list when they are going through the checkout process using Craft Commerce.
 
